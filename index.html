@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 15th Birthday Ellma Jiii 🐿️ ✨</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Password Protection Screen -->
+    <div id="passwordScreen" class="password-screen active">
+        <div class="glitch-overlay"></div>
+        <div class="password-container">
+            <h1 class="glitch-text" data-text="ENTER THE PASS">ENTER THE PASS</h1>
+            <div class="input-wrapper">
+                <input type="password" id="passwordInput" class="password-input" placeholder="Password..." autocomplete="off">
+                <button class="verify-btn" onclick="verifyPassword()">VERIFY</button>
+            </div>
+            <div id="errorMessage" class="error-message"></div>
+        </div>
+    </div>
+    
+    <!-- Audio Files -->
+    <audio id="glitchEffect1" loop>
+        <source src="glitcheffect1.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="glitchEffect2">
+        <source src="glitcheffect2.mp3" type="audio/mpeg">
+    </audio>
+    
+    <div class="confetti-container" id="confetti"></div>
+    
+    <section id="landing" class="section">
+        <div class="content">
+            <h1 class="animated-text glow">Happy Birthday Mera Pyaara Baccha ✨</h1>
+            <button class="btn-primary" onclick="enterSite()">Ispe Click karo -.+ </button>
+        </div>
+    </section>
+
+    <section id="memories" class="section">
+        <div class="content">
+            <h2 class="glow">Hehe 📸</h2>
+            <div class="slideshow-container">
+                <div class="slide fade-slide active-slide">
+                    <img src="photo1.jpg" alt="Memory 1" onerror="this.src='https://via.placeholder.com/500x400/ff69b4/ffffff?text=Memory+1'">
+                </div>
+                <div class="slide fade-slide">
+                    <img src="photo2.jpg" alt="Memory 2" onerror="this.src='https://via.placeholder.com/500x400/87ceeb/ffffff?text=Memory+2'">
+                </div>
+                <div class="slide fade-slide">
+                    <img src="photo3.jpg" alt="Memory 3" onerror="this.src='https://via.placeholder.com/500x400/98fb98/ffffff?text=Memory+3'">
+                </div>
+                <button class="nav-btn prev" onclick="changeSlide(-1)">❮</button>
+                <button class="nav-btn next" onclick="changeSlide(1)">❯</button>
+            </div>
+            <button class="btn-primary" onclick="nextSection('quiz')">Chalo aage -.+ </button>
+        </div>
+    </section>
+
+    <section id="quiz" class="section">
+        <div class="content">
+            <h2 class="glow">Memory Game - Match Karo Sab Cards -.+ 🎮</h2>
+            <div class="game-info">
+                <div class="game-stats">
+                    <span>Moves: <strong id="moveCount">0</strong></span>
+                    <span>Time: <strong id="gameTimer">00:00</strong></span>
+                </div>
+            </div>
+            <div class="memory-game-container" id="memoryGame">
+                <div class="memory-card" data-card="🎂">
+                    <div class="card-front">?</div>
+                    <div class="card-back">🎂</div>
+                </div>
+                <div class="memory-card" data-card="🎂">
+                    <div class="card-front">?</div>
+                    <div class="card-back">🎂</div>
+                </div>
+                <div class="memory-card" data-card="🎁">
+                    <div class="card-front">?</div>
+                    <div class="card-back">🎁</div>
+                </div>
+                <div class="memory-card" data-card="🎁">
+                    <div class="card-front">?</div>
+                    <div class="card-back">🎁</div>
+                </div>
+                <div class="memory-card" data-card="🎈">
+                    <div class="card-front">?</div>
+                    <div class="card-back">🎈</div>
+                </div>
+                <div class="memory-card" data-card="🎈">
+                    <div class="card-front">?</div>
+                    <div class="card-back">🎈</div>
+                </div>
+                <div class="memory-card" data-card="🐿️">
+                    <div class="card-front">?</div>
+                    <div class="card-back">🐿️</div>
+                </div>
+                <div class="memory-card" data-card="🐿️">
+                    <div class="card-front">?</div>
+                    <div class="card-back">🐿️</div>
+                </div>
+                <div class="memory-card" data-card="🎉">
+                    <div class="card-front">?</div>
+                    <div class="card-back">🎉</div>
+                </div>
+                <div class="memory-card" data-card="🎉">
+                    <div class="card-front">?</div>
+                    <div class="card-back">🎉</div>
+                </div>
+                <div class="memory-card" data-card="🌟">
+                    <div class="card-front">?</div>
+                    <div class="card-back">🌟</div>
+                </div>
+                <div class="memory-card" data-card="🌟">
+                    <div class="card-front">?</div>
+                    <div class="card-back">🌟</div>
+                </div>
+            </div>
+            <div id="gameWinMessage" class="game-win-message" style="display:none;">
+                <h3>Shabash! Game Complete -.+ 🎊</h3>
+                <p id="winStats"></p>
+            </div>
+            <button class="btn-primary" id="quizContinue" onclick="nextSection('reasons')" style="display:none;">Continue 💝</button>
+        </div>
+    </section>
+
+    <section id="reasons" class="section">
+        <div class="content">
+            <h2 class="glow">Ye lo Kuch Reasons Jiske Wajah se aap Amazing ho -.+💖</h2>
+            <div class="reasons-counter">
+                <div class="counter-display">
+                    <span id="reasonCount" class="big-number">0</span>
+                    <p>reasons and counting...</p>
+                </div>
+                <div id="heartContainer" class="heart-container"></div>
+                <div class="reasons-list" id="reasonsList">
+                    <!-- Reasons will appear here -->
+                </div>
+            </div>
+            <button class="btn-primary" onclick="nextSection('message')">Continue 💌</button>
+        </div>
+    </section>
+
+    <section id="message" class="section">
+        <div class="content">
+            <h2 class="glow">Ye lo ak chota sa letter -.+ 💝</h2>
+            <div class="message-wall">
+                <p class="handwritten">
+                    Dear Ellma Jiii (Mera Baccha),<br><br>
+                    To aaj ke es special din pe mai apko ye batana chahta hu ki aap mere liye kitni important ho -.+<br>
+                    Mai jab bhi apke sath hota mujhe apnapan sa lagta.<br>
+                    Mai apke sath hota to... mujhe lagta hai ki haa koi hai mere sath jo mujhe sachme pasand karta hau..<br>
+                    Bina kisi chahat ke aapse bin wajah itna pyar milna... mujhe bahot pasand hai....<br><br>
+                    Once Again Happy Birthday Mera Bacchaa! 🎂💖
+                </p>
+                <button class="btn-secret" onclick="showSecretNote()">Agar isse Click ki to aap motiii -.+ </button>
+            </div>
+            <button class="btn-primary" onclick="nextSection('cake')">Chalo chalo aage -.+</button>
+        </div>
+    </section>
+
+    <div id="secretPopup" class="popup">
+        <div class="popup-content letter-animation">
+            <span class="close-btn" onclick="closeSecretNote()">&times;</span>
+            <h3>Agar ye click kiya aapne to pakka motiii billiiii aappp -.+</h3>
+            <p class="handwritten">
+                Aap Sabseeeeee Special Insaan ho jisse aaj tak mai itna khul ke baat kar sakta!<br>
+                Koi bhi meri pareshani nahi samjhta lekin... aap hi ho jo meri sari baat sunte...<br>
+                You aree theee Besttttttttttttttttt Mera Bacchaa!<br><br>
+                Hamesha aise hi rehena...💖
+            </p>
+        </div>
+    </div>
+
+    <section id="cake" class="section">
+        <div class="content">
+            <h2 class="glow">Cake Kat Lo -.+ Motii Billi 🎂</h2>
+            <div class="cake-container">
+                <div id="cakeImage" class="cake">
+                    <svg viewBox="0 0 200 200" class="cake-svg">
+                        <rect x="40" y="120" width="120" height="30" fill="#8B4513" rx="5"/>
+                        <rect x="50" y="100" width="100" height="20" fill="#D2691E" rx="3"/>
+                        <rect x="40" y="80" width="120" height="30" fill="#8B4513" rx="5"/>
+                        <rect x="50" y="60" width="100" height="20" fill="#FFB6C1" rx="3"/>
+                        <path d="M40,80 Q50,75 60,80 T80,80 T100,80 T120,80 T140,80 T160,80" fill="none" stroke="#FFF" stroke-width="3"/>
+                        <path d="M40,110 Q50,105 60,110 T80,110 T100,110 T120,110 T140,110 T160,110" fill="none" stroke="#FFF" stroke-width="3"/>
+                        <rect x="70" y="45" width="5" height="15" fill="#FF69B4"/>
+                        <rect x="97" y="45" width="5" height="15" fill="#87CEEB"/>
+                        <rect x="125" y="45" width="5" height="15" fill="#98FB98"/>
+                        <ellipse cx="72.5" cy="43" rx="4" ry="6" fill="#FFD700" class="flame"/>
+                        <ellipse cx="99.5" cy="43" rx="4" ry="6" fill="#FFD700" class="flame"/>
+                        <ellipse cx="127.5" cy="43" rx="4" ry="6" fill="#FFD700" class="flame"/>
+                    </svg>
+                </div>
+                <button class="btn-primary" id="cutCakeBtn" onclick="cutCake()"> -.+ 🎂</button>
+            </div>
+            <div id="balloons" class="balloons-container"></div>
+            <button class="btn-primary" id="continueAfterCake" onclick="nextSection('game')" style="display:none;">Continue 🎮</button>
+        </div>
+    </section>
+
+    <section id="game" class="section">
+        <div class="content">
+            <h2 class="glow">Chalo Ek Quiz Khelte Hai -.+ 🎯</h2>
+            <div class="quiz2-container">
+                <div id="quiz2Question" class="quiz2-question">
+                    <h3>Hamri Pehli Baar Mulakat kab hui thi?</h3>
+                    <div class="quiz2-options">
+                        <button class="quiz2-btn" onclick="answerQuiz2(true)">18/02/2025 05:56</button>
+                        <button class="quiz2-btn" onclick="answerQuiz2(false)">19/02/2025 06:56</button>
+                        <button class="quiz2-btn" onclick="answerQuiz2(false)">18/02/2025 05:46</button>
+                        <button class="quiz2-btn" onclick="answerQuiz2(false)">18/02/2025 05:55</button>
+                    </div>
+                </div>
+                <div id="quiz2Result" class="quiz2-result" style="display:none;">
+                    <h3>Wuw -.+ 🎊</h3>
+                    <p>Yaad Hai Tumko! ✨</p>
+                </div>
+            </div>
+            <button class="btn-primary" id="continueAfterGame" onclick="nextSection('wishes')" style="display:none;">Aage Badhooo -.+</button>
+        </div>
+    </section>
+
+    <section id="wishes" class="section">
+        <div class="content">
+            <h2 class="glow">Lo kuch Birthday Wishes ✨</h2>
+            <div class="wishes-wall">
+                <div class="wish-item" style="animation-delay: 0s;">
+                    <span class="wish-emoji">🌟</span>
+                    <p>Bhagwan kare apke sare wishes pure ho!</p>
+                </div>
+                <div class="wish-item" style="animation-delay: 0.3s;">
+                    <span class="wish-emoji">✨</span>
+                    <p>Aap Hameshaa Khush Rahe!</p>
+                </div>
+                <div class="wish-item" style="animation-delay: 0.6s;">
+                    <span class="wish-emoji">💖</span>
+                    <p>Har wakt ham shath rahe..!</p>
+                </div>
+                <div class="wish-item" style="animation-delay: 0.9s;">
+                    <span class="wish-emoji">💫</span>
+                    <p>Aur aap ache se rahe apke ghar me sab salamt rahe!</p>
+                </div>
+                <div class="wish-item" style="animation-delay: 1.2s;">
+                    <span class="wish-emoji">✨</span>
+                    <p>Hamesha apni jindgi me muskurate raho!</p>
+                </div>
+                <div class="wish-item" style="animation-delay: 1.5s;">
+                    <span class="wish-emoji">🌺</span>
+                    <p>Aur aap hameshaa meri pyari si billi raho -.+</p>
+                </div>
+            </div>
+            <button class="btn-primary" onclick="nextSection('journal')">Chaloo Aage -.+</button>
+        </div>
+    </section>
+
+    <section id="journal" class="section">
+        <div class="content">
+            <h2 class="glow">Hehe Last Message -.+</h2>
+            <div class="journal-container">
+                <div class="journal-entry">
+                    <h3>To Aaj 1 October 2025 hai..</h3>
+                    <p class="journal-text">
+                        Mera Pyaaraa Baccha...<br><br>
+                        Apko yaad maine apne ak sapne ke bare me bataya the ki mujhe aapse milna hai ye mera sapna hai.
+                        To Halaki ye thora mushkil hai... Lekin NaMumkin to nahi haina.. yaad rakhna aap ki mai milunga to jarur lekin ak date pe...
+                        <br><br>
+                        Year to nahi pata mujhe bhi lekin date 18 Feb ko hi milunga...
+                        Aur bas jayada kuch nahi... bas aap thore se efforts dala karo baki sab mai dekh lunga..💖
+                        <br><br>
+                        Ye Baat Yaad Rakhna ki Ha Thora time lagega lekin milunga jarur..! 💖
+                        <br><br>
+                        With all the love,<br>
+                        Once Againn Happyy Birthday Meraaa Pyaraaa Bacchaaa ✨
+                    </p>
+                </div>
+                <div class="polaroid-stack">
+                    <div class="polaroid" style="transform: rotate(-5deg);">
+                        <div class="polaroid-img"><img src="photo11.jpg" alt="Memory Photo 1"></div>
+                        <p>Hehe Ham Dono -.+</p>
+                    </div>
+                    <div class="polaroid" style="transform: rotate(3deg);">
+                        <div class="polaroid-img"><img src="photo22.jpg" alt="Memory Photo 2"></div>
+                        <p>Aise Hi Khaunga apko mai >.<</p>
+                    </div>
+                    <div class="polaroid" style="transform: rotate(-3deg);">
+                        <div class="polaroid-img"><img src="photo33.jpg" alt="Memory Photo 3"></div>
+                        <p>Hehe</p>
+                    </div>
+                </div>
+            </div>
+            <button class="btn-primary" onclick="nextSection('voice')">Continue 🎧</button>
+        </div>
+    </section>
+
+    <section id="voice" class="section">
+        <div class="content">
+            <h2 class="glow">Kuch hai Sun Lo 🎧</h2>
+            <div class="voice-player">
+                <button class="btn-voice" id="playVoiceBtn" onclick="playVoiceNote()">
+                    <span id="voiceIcon">🎧</span>
+                    <span id="voiceText">Mujhe click karke suno -.+ </span>
+                </button>
+            </div>
+            <audio id="bgMusic" loop>
+                <source src="bgmusic.mp3" type="audio/mpeg">
+            </audio>
+            <audio id="voiceNote">
+                <source src="voicenote.mp3" type="audio/mpeg">
+            </audio>
+            <p class="note">hehe pata nahi kya bola lekin sun lo chup chap -.+</p>
+            <button class="btn-primary" onclick="nextSection('finale')">Continue 🎆</button>
+        </div>
+    </section>
+
+    <section id="countdown" class="section">
+        <div class="content">
+            <h2 class="glow">Time on This Special Page ⏰</h2>
+            <div class="timer-display">
+                <div class="time-box">
+                    <span id="minutes" class="time-number">00</span>
+                    <span class="time-label">Minutes</span>
+                </div>
+                <div class="time-separator">:</div>
+                <div class="time-box">
+                    <span id="seconds" class="time-number">00</span>
+                    <span class="time-label">Seconds</span>
+                </div>
+            </div>
+            <p class="timer-message">Every second spent here is a celebration of YOU! 🎉</p>
+            <div class="sparkle-container" id="sparkles"></div>
+            <button class="btn-primary" onclick="nextSection('finale')">Grand Finale 🎆</button>
+        </div>
+    </section>
+
+    <section id="finale" class="section">
+        <canvas id="fireworks"></canvas>
+        <div class="content finale-content">
+            <h1 class="finale-text glow heartbeat">I Love You Soo Mujhe Ellma Ji... 💖</h1>
+            <p class="typing-effect" id="typingText"></p>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
